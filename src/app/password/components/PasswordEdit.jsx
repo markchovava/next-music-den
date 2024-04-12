@@ -7,19 +7,25 @@ import Link from "next/link";
 import { toast, Bounce } from 'react-toastify';
 
 
-
+/**
+ *  
+ *  EDIT PASSWORD COMPONENTS
+ * 
+ */
 
 export default function PasswordEdit() {
     const [data, setData] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
     const [errMsg, setErrMsg] = useState({});
     const { getAuthToken } = tokenAuth();
+    /* AXIOS PAGE */
     const config = {
         headers: {
           "Content-Type": "multipart/form-data",
           'Authorization': `Bearer ${getAuthToken()}`, 
         }
     };
+    /* SUBMIT THE NE PASSWORD TO THE API */
     const submitData = async () => {
         setErrMsg({});
         if(!data.password){

@@ -5,6 +5,12 @@ import Footer from "@/app/components/Footer";
 import { getlastFMAlbumsByArtist12 } from "@/api/getAlbums";
 
 
+/**
+ * 
+ *  Artist Albums Page
+ * 
+ **/
+
 
 export default async function Page({ params: {slug} }) {
   const albums = await getlastFMAlbumsByArtist12(slug);

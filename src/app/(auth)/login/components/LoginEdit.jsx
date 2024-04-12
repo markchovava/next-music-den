@@ -22,6 +22,7 @@ export default function LoginEdit() {
     const { setAuthToken } = tokenAuth();
     const { setRoleToken } = tokenRole();
 
+    /* LOGIN BY FORM */
     const submitData = async () => {
         if(!data.email){
             setErrMsg({email: 'Email is Required.'});
@@ -65,6 +66,7 @@ export default function LoginEdit() {
         }    
     }
 
+    /* LOGIN BY GMAIL */
     const gmailLogin = async () => {
         setErrMsg({});
         const formData = gmailData;
@@ -88,13 +90,12 @@ export default function LoginEdit() {
                         setErrMsg({gmail_message: response.data.gmail_message})
                         setAuthToken(response.data.auth_token);
                         setRoleToken(response.data.role_level);
-                        router.push('/');
+                        router.push('/login');
                         setIsGmail(false);
                         return;
                     }
                     setAuthToken(response.data.auth_token);
                     setRoleToken(response.data.role_level);
-                    router.push('/');
                     toast.success(response.data.message, {
                         position: "top-right",
                         autoClose: 5000,
@@ -106,6 +107,7 @@ export default function LoginEdit() {
                         theme: "colored",
                         transition: Bounce,
                     });
+                    router.push('/');
                     setIsGmail(false);
                     return;
                 }

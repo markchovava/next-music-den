@@ -42,7 +42,7 @@ export default function UserTrackList() {
         }    
     }
 
-
+    /* GET USER TRACKS */
     async function getData(){
         try{
             const result = await axiosClientAPI.get(`user-track`, config)

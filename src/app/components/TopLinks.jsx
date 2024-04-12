@@ -6,9 +6,14 @@ import { useEffect, useState } from "react";
 import { tokenAuth } from "@/tokens/tokenAuth";
 import { tokenRole } from "@/tokens/tokenRole";
 import { useRouter } from "next/navigation";
-import { baseURL } from "@/api/baseURL";
 import axiosClientAPI from "@/api/axiosClientAPI";
 
+
+/**
+ * 
+ * TOP LINKS COMPONENT 
+ * 
+ **/
 
 
 export default function TopLinks() {
@@ -18,6 +23,7 @@ export default function TopLinks() {
     const [isSetting, setIsSetting] = useState(false);
     const { getAuthToken, removeAuthToken } = tokenAuth();
     const { removeRoleToken, getRoleToken } = tokenRole();
+    /* AXIOS HEADERS */
     const config = {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -25,6 +31,7 @@ export default function TopLinks() {
         }
     };
 
+    /* LOGOUT */
     const logout = async () => {
         try{
         const result = await axiosClientAPI.get(`logout`, config)

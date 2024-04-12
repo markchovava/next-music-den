@@ -4,7 +4,11 @@ import TopLinks from "../components/TopLinks";
 import ProfileView from "./components/ProfileView";
 
 
-
+/**
+ * 
+ *  VIEW YOUR PROFILE PAGE 
+ * 
+ **/
 
 export default async function page() {
   

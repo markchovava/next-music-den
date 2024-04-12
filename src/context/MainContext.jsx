@@ -4,6 +4,12 @@ import { artistInit, artistInitialState, artistReducer } from "@/reducer/ArtistR
 import { trackInit, trackInitialState, trackReducer } from "@/reducer/TrackReducer";
 import { createContext, useContext, useReducer } from "react";
 
+/**
+ * 
+ *  THE GLOBAL CONTEXT
+ * 
+ **/
+
 
 
 export const MainContext = createContext();

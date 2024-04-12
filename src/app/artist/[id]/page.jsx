@@ -11,6 +11,12 @@ import ArtistTracks from "./components/ArtistTracks";
 import { getlastFMArtistTracks12 } from "@/api/getTracks";
 
 
+/**
+ * 
+ * ARTIST PAGE
+ * 
+ **/
+
 
 export default async function Page({params: { id }}) {
     const [artist, album, tracks] = await Promise.all([
@@ -48,7 +54,7 @@ export default async function Page({params: { id }}) {
             </div>
           </section> 
 
-          {/* ---------   INFORMATION    ----------- */}
+          {/* ---------  ARTIST INFORMATION    ----------- */}
           <ArtistInfo artist={artist} />
 
           {/* -------------  -------------- */}

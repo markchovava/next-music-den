@@ -1,3 +1,9 @@
+/**
+ * 
+ *  FORMAT NUMBERS TO MINUTES AND SECONDS
+ *  
+ **/
+
 export const durationFormat = (time) => {
     let min = '0' + Math.floor(time / 60);
     let sec = Math.floor(time % 60);

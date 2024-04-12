@@ -2,6 +2,12 @@ import ApiKeys from "./apiKeys";
 import lastFM from "./lastFm"
 
 
+/**
+ * 
+ * Get the latest 12 Albums
+ * 
+ **/
+
 export async function getlastFMArtists1() {
     const { topArtistsURL1 } = lastFM();
     const response = await fetch(topArtistsURL1)
@@ -14,6 +20,12 @@ export async function getlastFMArtists1() {
 }
 
 
+/**
+ * 
+ * Get the latest 12 Artists
+ * 
+ **/
+
 export async function getlastFMArtists2() {
     const { topArtistsURL2 } = lastFM();
     const response = await fetch(topArtistsURL2)
@@ -25,6 +37,12 @@ export async function getlastFMArtists2() {
 
 }
 
+
+/**
+ * 
+ *  Get the Artist Info
+ * 
+ **/
 
 export async function getlastFMArtist(id) {
     const { lastFmApiKey } = ApiKeys();

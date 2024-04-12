@@ -11,7 +11,11 @@ import { useEffect, useLayoutEffect, useState } from "react";
 import { FaHeart, FaRegHeart, FaSearch } from "react-icons/fa";
 import { toast, Bounce } from 'react-toastify';
 
-
+/**
+ * 
+ *  ARTIST LIST
+ *  
+ **/
 
 
 export default function ArtistList({ artist }) {
@@ -26,6 +30,7 @@ export default function ArtistList({ artist }) {
     const [search, setSearch] = useState('');
     const [isSearch, setIsSearch] = useState(false);
     const { getAuthToken } = tokenAuth();
+    /* AXIOS HEADERS */
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
@@ -33,6 +38,7 @@ export default function ArtistList({ artist }) {
       }
     };
 
+    /* PAGINATION */
     async function paginationHandler(pageNo) {
         try{
            const result = await axios.get(`${lastFmUrl}method=chart.gettopartists&api_key=${lastFmApiKey}&format=json&limit=12&page=${pageNo}`)

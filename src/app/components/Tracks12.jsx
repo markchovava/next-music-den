@@ -15,6 +15,7 @@ export default function Tracks12({ tracks12 }) {
     const tracksData = tracks12.tracks.track;
     const [isLike, setIsLike] = useState(false);
     const { getAuthToken } = tokenAuth();
+    /* AXIOS HEADERS */
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
@@ -22,7 +23,7 @@ export default function Tracks12({ tracks12 }) {
       }
     };
 
-
+    /* ADD TRACK TO USER COLLECTION */
     const submitData = async () => {
       const formData = trackState.item;
       try{

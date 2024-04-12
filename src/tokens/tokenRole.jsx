@@ -1,5 +1,12 @@
 "use client"
 
+/**
+ * 
+ *  ACCESS LEVEL TOKENS SENT FROM LARAVEL API 
+ *  STORED IN LOCAL STORAGE 
+ * 
+ **/
+
 export const tokenRole = () => {
 
     const setRoleToken = (token) => {

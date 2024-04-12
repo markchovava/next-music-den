@@ -1,5 +1,13 @@
 import RegisterEdit from './components/RegisterEdit'
 
+
+/**
+ * 
+ *  Register Page
+ * 
+ **/
+
+
 export default function page() {
   return (
     <>

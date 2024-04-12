@@ -1,6 +1,11 @@
 "use client";
 
-
+/**
+ * 
+ *  REDUCER LOGIC FOR ALBUMS
+ *  USED IN ADDING ITEM TO USE COLLECTION 
+ * 
+ **/
 
 export const albumInit = (albumInitialState) => {
     const result = {

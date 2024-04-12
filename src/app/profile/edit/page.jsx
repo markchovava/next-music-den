@@ -3,7 +3,11 @@ import ProfileEdit from "./components/ProfileEdit";
 import LeftNav from "@/app/components/LeftNav";
 import TopLinks from "@/app/components/TopLinks";
 
-
+/**
+ * 
+ *  EDIT YOUR PROFILE PAGE 
+ * 
+ **/
 
 
 export default function page() {

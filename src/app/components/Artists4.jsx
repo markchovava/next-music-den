@@ -17,6 +17,7 @@ export default function Artists4({ artists4 }) {
     const artistsData = artists4.artists.artist;
     const [isLike, setIsLike] = useState(false);
     const { getAuthToken } = tokenAuth();
+    /* AXIOS HEADERS */
     const config = {
         headers: {
             "Content-Type": "multipart/form-data",
@@ -24,6 +25,7 @@ export default function Artists4({ artists4 }) {
         }
     }
 
+    /* ADD TO USER ARTIST COLLECTION */
     const submitData = async () => {
         const formData = artistState.item;
         setIsLike(false);

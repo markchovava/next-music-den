@@ -1,6 +1,13 @@
 import ApiKeys from './apiKeys';
 
 
+/**
+ * 
+ * last.fm APIs
+ * 
+ **/
+
+
 export default function lastFM(){
     const lastFmUrl = `http://ws.audioscrobbler.com/2.0/?`;
     const { lastFmApiKey } = ApiKeys();

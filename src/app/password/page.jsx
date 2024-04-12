@@ -3,7 +3,11 @@ import LeftNav from "@/app/components/LeftNav";
 import TopLinks from "@/app/components/TopLinks";
 import PasswordEdit from "./components/PasswordEdit";
 
-
+/**
+ * 
+ *  PASSWORD RESET PAGE
+ * 
+ */
 
 
 export default function page() {

@@ -1,6 +1,13 @@
 "use client";
 
 
+/**
+ * 
+ *  REDUCER LOGIC FOR ARTISTS
+ *  USED IN ADDING ITEM TO USER COLLECTION 
+ * 
+ **/
+
 export const artistInit = (artistInitialState) => {
     const result = {
         ...artistInitialState, 

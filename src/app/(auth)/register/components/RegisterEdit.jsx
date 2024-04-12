@@ -1,19 +1,26 @@
 "use client"
 import { baseURL } from '@/api/baseURL';
 import axios from "axios";
-import Link from 'next/link'
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react'
-import { SiGmail } from 'react-icons/si'
+import { useEffect, useState } from 'react';
+import { toast, Bounce } from 'react-toastify';
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode";
 
 
 
 export default function RegisterEdit() {
     const router = useRouter();
     const [data, setData] = useState({});
+    const [gmailData, setGmailData] = useState({})
+    const [isGmail, setIsGmail] = useState(false);
     const [isSubmit, setIsSubmit] = useState(false);
     const [errMsg, setErrMsg] = useState({});
 
+    /** 
+     *  Login using form
+     **/
     const submitData = async () => {
         if(!data.first_name){
             setErrMsg({first_name: 'First Name is Required.'});
@@ -69,19 +76,85 @@ export default function RegisterEdit() {
         }    
     }
 
+
+    /** 
+     *  Login with Gmail 
+    **/
+    const gmailLogin = async () => {
+        setErrMsg({});
+        const formData = gmailData;
+        try{
+            const result = await axios.post(`${baseURL}register-by-gmail`, formData)
+                .then((response) => {
+                    console.log(response.data)
+                    if(response.data.status == 0){
+                        toast.info(response.data.message, {
+                            position: "top-right",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "colored",
+                            transition: Bounce,
+                        });
+                        router.push('/login');
+                        setIsGmail(false);
+                        return;
+                    }
+                    toast.success(response.data.message, {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "colored",
+                        transition: Bounce,
+                    });
+                    router.push('/');
+                    setIsGmail(false);
+                    return;
+                }
+                );    
+            } catch (error) {
+                console.error(`Error: ${error}`);
+                console.error(`Error Message: ${error.message}`);
+                console.error(`Error Response: ${error.response}`);
+                setErrMsg({});
+                setIsGmail(false);
+                return;
+            }    
+    }
+
     useEffect(() => {
         isSubmit === true && submitData();
     }, [isSubmit]);
+
+    useEffect(() => {
+        isGmail === true && gmailLogin();
+    }, [isGmail]);
 
 
 
   return (
     <section id='form' className='m-[2rem] p-[1.5rem] w-[100%] bg-opacity-25 bg-slate-700 rounded-lg'>
         <h4 className='font-bold tracking-wide text-4xl mb-[2rem]'>Sign up to MusicDen</h4>
-        <button className='bg-gradient-to-tr from-blue-600 to-cyan-600 hover:bg-gradient-to-tr hover:from-blue-600 hover:to-blue-700 rounded-lg flex items-center justify-start gap-6 px-4 py-3 drop-shadow-lg mb-[1rem]'>
-            <SiGmail className='text-2xl' /> 
-            <span className='text-lg tracking-wide'>Sign Up with Gmail</span>
-        </button>
+        <div className='flex'>
+            <GoogleLogin
+                className='px-4 py-3'
+                onSuccess={credentialResponse => {
+                    const decodedResponse = jwtDecode(credentialResponse.credential)
+                    setGmailData({ email: decodedResponse.email });
+                    setIsGmail(true);
+                }}
+                onError={() => {
+                    console.log('Login Failed');
+                }}
+            />
+        </div>
         <div className='flex items-center justify-between gap-2 mb-[1.2rem]'>
             <hr className='border-slate-700 w-[50%]' />
             <span className='text-slate-300'>OR</span>

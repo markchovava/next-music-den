@@ -5,6 +5,12 @@ import { FaGuitar, FaMusic, FaCompactDisc, FaMicrophone } from 'react-icons/fa';
 import { tokenAuth } from "@/tokens/tokenAuth";
 
 
+/**
+ * 
+ *  LEFT NAVIGATION 
+ * 
+ **/
+
 
 export default function LeftNav() {
   const {getAuthToken} = tokenAuth()

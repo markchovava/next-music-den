@@ -26,7 +26,7 @@ export async function getlastFMArtistTracks12(id) {
  *      @id = artist name
  *      @slug = song name
  * 
- *  */
+ **/
 export async function getlastFMArtistTrack(id, slug) {
     const { lastFmApiKey } = ApiKeys();
     const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${lastFmApiKey}&artist=${id}&track=${slug}&format=json`)
@@ -37,6 +37,12 @@ export async function getlastFMArtistTrack(id, slug) {
     return await response.json()
 
 }
+
+/**
+ * 
+ * Get the latest 12 Tracks
+ * 
+ **/
 
 export async function getlastFMTracks12() {
     const { lastFmApiKey } = ApiKeys();

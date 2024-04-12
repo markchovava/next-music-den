@@ -6,17 +6,20 @@ import { useEffect, useLayoutEffect, useState } from "react"
 import Link from "next/link";
 
 
+
+
 export default function ProfileEdit() {
     const [data, setData] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
     const { getAuthToken } = tokenAuth();
+    /* AXIOS HEADERS */
     const config = {
         headers: {
           "Content-Type": "multipart/form-data",
           'Authorization': `Bearer ${getAuthToken()}`, 
         }
     };
-
+    /* GET YOUR PROFILE DATA */
     const getData = async () => {
         try{
             const result = await axiosClientAPI.get(`auth-user`, config)
@@ -29,6 +32,7 @@ export default function ProfileEdit() {
          } 
     }
 
+    /* UPDATE YOUR PROFILE */
     const submitData = async () => {
         const formData = {
             first_name: data.first_name,

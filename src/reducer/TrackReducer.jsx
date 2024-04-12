@@ -1,6 +1,14 @@
 "use client";
 
 
+/**
+ * 
+ *  REDUCER LOGIC FOR TRACKS
+ *  USED IN ADDING ITEM TO USER
+ *  COLLECTION 
+ * 
+ **/
+
 
 export const trackInit = (trackInitialState) => {
     const result = {

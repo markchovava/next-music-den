@@ -12,7 +12,9 @@ import axiosClientAPI from "@/api/axiosClientAPI";
 import { toast, Bounce } from 'react-toastify';
 import axios from "axios";
 
-
+/* 
+*   LIST OF ALBUMS
+*/
 
 export default function AlbumList({ albums, slug }) {
     const albumsData = albums.topalbums;
@@ -24,6 +26,7 @@ export default function AlbumList({ albums, slug }) {
     const [prevPage, setPrevPage] = useState(Number(albumsData['@attr']['page']) - 1);
     const [nextPage, setNextPage] = useState(Number(albumsData['@attr']['page']) + 1);
     const { getAuthToken } = tokenAuth();
+    /* AXIOS HEADERS */
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
@@ -31,6 +34,7 @@ export default function AlbumList({ albums, slug }) {
       }
     };
 
+    /* PAGINATION */
     async function paginationHandler(pageNo) {
         console.log(pageNo)
         try{
